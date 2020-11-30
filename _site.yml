@@ -1,0 +1,12 @@
+name: "my-website"
+navbar:
+  title: "My Webse"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output:
+  html_document:
+    css: site_style.css
+output_dir: "docs"
