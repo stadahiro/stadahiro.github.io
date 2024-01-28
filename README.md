@@ -1,5 +1,3 @@
-# stadahiro.github.io
+# 下司忠大のHPはresearchmapに統合されました。
 
-aaaaaaaa
-
-testtest
+https://researchmap.jp/shimotsukasa
