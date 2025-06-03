@@ -1,0 +1,8 @@
+title: 東京アートまとめ
+description: 東京の美術館・展覧会情報を毎日自動更新
+url: "https://stadahiro.github.io"   # 独自ドメイン取得後に置換
+remote_theme: "mmistakes/minimal-mistakes"   # ← GitHub Pages 公認 :contentReference[oaicite:0]{index=0}
+plugins:
+  - jekyll-feed    # RSS 自動生成 :contentReference[oaicite:1]{index=1}
+  - jekyll-seo-tag # SEO メタ
+paginate: 10        # 1 ページ 10 件
