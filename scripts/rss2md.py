@@ -10,7 +10,6 @@ RSS_URLS = [
 POST_DIR = "_posts"
 
 os.makedirs(POST_DIR, exist_ok=True)
-print(f'Write to: {filename}')
 
 for url in RSS_URLS:
     feed = feedparser.parse(url)
