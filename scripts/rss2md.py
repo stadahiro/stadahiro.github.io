@@ -30,3 +30,4 @@ for url in RSS_URLS:
             f.write(f"layout: single\n")
             f.write(f"link: {link}\n")
             f.write(f"---\n\n{summary}\n")
+            
