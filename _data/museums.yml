@@ -8,3 +8,8 @@
   area: 六本木
   nearest: 六本木駅
   url: https://www.mori.art.museum/
+- id: nat-museum
+  name: 国立新美術館
+  area: 六本木
+  nearest: 乃木坂駅
+  url: https://www.nact.jp/

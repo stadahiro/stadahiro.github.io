@@ -1,0 +1,4 @@
+{% assign m = site.data.museums | where: "id", include.id | first %}
+{% if m and m.ticket_url %}
+<a class="btn btn--primary" href="{{ m.ticket_url }}?utm_source=site&utm_medium=referral" target="_blank" rel="noopener">チケットを購入</a>
+{% endif %}

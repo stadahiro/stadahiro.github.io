@@ -1,8 +1,17 @@
-title: 東京アートまとめ
-description: 東京の美術館・展覧会情報を毎日自動更新
+itle: 東京アートまとめ
+email: yourname@example.com
+url: "https://stadahiro.github.io"  # 独自ドメインを取得したら置換
 remote_theme: "mmistakes/minimal-mistakes"
+logo: "/assets/images/logo.svg"      # 任意
+paginate: 10
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-include-cache   # ← これを忘れると失敗しやすい
-paginate: 10
+  - jekyll-include-cache
+# ナビゲーション設定（Minimal Mistakes 用）
+header_pages:
+  - about.md
+  - museums.md
+  - tags/index.html
+atom_feed:
+  hide: false

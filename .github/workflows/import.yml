@@ -2,20 +2,20 @@ name: Import exhibitions
 on:
   schedule:
     - cron:  '0 1 * * *'   # JST 10:00 毎日
-  workflow_dispatch:        # 手動トリガも可能
+  workflow_dispatch:        # 手動実行ボタン
 jobs:
-  fetch:
+  import:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Python deps
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install deps
         run: pip install feedparser markdownify python-slugify
-
       - name: Convert RSS → Markdown
-        run: |
-          python scripts/rss2md.py
-
+        run: python scripts/rss2md.py
       - uses: EndBug/add-and-commit@v9
         with:
           add: "_posts/*.md"
