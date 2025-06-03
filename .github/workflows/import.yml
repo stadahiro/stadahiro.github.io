@@ -1,22 +1,36 @@
 name: Import exhibitions
+
 on:
   schedule:
-    - cron:  '0 1 * * *'   # JST 10:00 毎日
-  workflow_dispatch:        # 手動実行ボタン
+    - cron: '0 1 * * *'        # JST 10:00 毎日
+  workflow_dispatch:            # 手動実行
+
 jobs:
   import:
     runs-on: ubuntu-latest
+
     steps:
+      # ① リポジトリ取得
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+
+      # ② Python 準備
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+
+      # ③ 必要ライブラリをインストール
       - name: Install deps
-        run: pip install feedparser markdownify python-slugify
+        run: |
+          pip install python-slugify icalendar requests
+
+      # ④ ICS→Markdown 変換（複数スクリプトを呼び出す場合はここに追加）
+      - name: Import exhibitions from ICS
+        run: python scripts/ics2md.py
+
+      # ⑤ 生成された .md をコミット & プッシュ
       - uses: EndBug/add-and-commit@v9
         with:
           add: "_posts/*.md"
-          message: "auto: import exhibitions"
-      - name: Scrape MOMAT
-        run: python scripts/scrape_momat.py
+          add_options: "--ignore-missing"     # 生成ゼロでも失敗しない
+          default_author: github_actions
+          message: "auto: import exhibitions (ICS)"
