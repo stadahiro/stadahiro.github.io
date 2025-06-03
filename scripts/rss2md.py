@@ -1,32 +1,51 @@
-#!/usr/bin/env python3
-"""Google アラート RSS → Jekyll ポスト"""
-import feedparser, os, datetime, hashlib
+import feedparser, os, datetime
 from markdownify import markdownify as md
 from slugify import slugify
 
 RSS_URLS = [
-    "https://www.city.takasaki.gunma.jp/rss/10/soshiki-2-11.xml",  # 例
+    "https://www.city.takasaki.gunma.jp/rss/10/soshiki-2-11.xml",
+    # 追加 RSS をここに
 ]
-POST_DIR = "_posts"
 
+POST_DIR = "_posts"
 os.makedirs(POST_DIR, exist_ok=True)
 
 for url in RSS_URLS:
     feed = feedparser.parse(url)
-    for entry in feed.entries:
-        title = entry.title
-        link = entry.link
-        date = datetime.datetime(*entry.published_parsed[:6]).date()
+    print(f"{len(feed.entries)} entries from {url}")
+    for e in feed.entries:
+        # --- 日付を安全に取得 ---
+        if hasattr(e, "published_parsed"):
+            dt = datetime.datetime(*e.published_parsed[:6])
+        elif hasattr(e, "updated_parsed"):
+            dt = datetime.datetime(*e.updated_parsed[:6])
+        else:
+            dt = datetime.datetime.today()
+        date = dt.date()
+
+        # --- slug & ファイル名 ---
+        title = e.get("title", "No title")
         slug = slugify(title)[:50]
-        filename = f"{POST_DIR}/{date}-{slug}.md"
-        if os.path.exists(filename):
-            continue  # 重複スキップ
-        summary = md(entry.summary)[:200]
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write(f"---\n")
-            f.write(f"title: \"{title}\"\n")
-            f.write(f"date: {date}\n")
-            f.write(f"layout: single\n")
-            f.write(f"link: {link}\n")
-            f.write(f"---\n\n{summary}\n")
+        fname = f"{POST_DIR}/{date}-{slug}.md"
+        if os.path.exists(fname):
+            continue
+
+        # --- 本文 ---
+        summary = md(e.get("summary", ""))[:300]
+        link = e.get("link", "")
+
+        with open(fname, "w", encoding="utf-8") as f:
+            f.write(
+f"""---
+title: "{title}"
+date: {date}
+layout: single
+link: {link}
+---
+{summary}
+""")
+
+            
+
+
             
