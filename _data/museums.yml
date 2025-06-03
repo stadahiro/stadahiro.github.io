@@ -1,0 +1,10 @@
+- id: momat
+  name: 東京国立近代美術館
+  area: 千代田
+  nearest: 竹橋駅
+  url: https://www.momat.go.jp/
+- id: mori
+  name: 森美術館
+  area: 六本木
+  nearest: 六本木駅
+  url: https://www.mori.art.museum/
