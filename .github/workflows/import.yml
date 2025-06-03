@@ -1,0 +1,22 @@
+name: Import exhibitions
+on:
+  schedule:
+    - cron:  '0 1 * * *'   # JST 10:00 毎日
+  workflow_dispatch:        # 手動トリガも可能
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python deps
+        run: pip install feedparser markdownify python-slugify
+
+      - name: Convert RSS → Markdown
+        run: |
+          python scripts/rss2md.py
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: "_posts/*.md"
+          message: "auto: import exhibitions"
