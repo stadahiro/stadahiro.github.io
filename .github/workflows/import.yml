@@ -14,9 +14,9 @@ jobs:
           python-version: "3.x"
       - name: Install deps
         run: pip install feedparser markdownify python-slugify
-      - name: Convert RSS → Markdown
-        run: python scripts/rss2md.py
       - uses: EndBug/add-and-commit@v9
         with:
           add: "_posts/*.md"
           message: "auto: import exhibitions"
+      - name: Scrape MOMAT
+        run: python scripts/scrape_momat.py
