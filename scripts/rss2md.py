@@ -5,7 +5,7 @@ from markdownify import markdownify as md
 from slugify import slugify
 
 RSS_URLS = [
-    "https://www.nact.jp/exhibition/rss.xml",  # 例
+    "https://www.city.takasaki.gunma.jp/rss/10/soshiki-2-11.xml",  # 例
 ]
 POST_DIR = "_posts"
 
