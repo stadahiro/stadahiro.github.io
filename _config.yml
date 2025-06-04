@@ -14,3 +14,4 @@ header_pages:               # ナビゲーション（Minimal Mistakes）
   - tags/index.html
 atom_feed:
   hide: false
+future: true   # ← この行を追加すると、「未来日付の記事」もビルド対象になります
