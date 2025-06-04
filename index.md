@@ -8,12 +8,12 @@ paginate: false
 {: .notice--primary}
 **本サイトは東京の美術館・展覧会情報を毎日自動更新しています。**
 
----
-
 {% comment %}
   今日の日付（文字列 "YYYY-MM-DD"）を取得
 {% endcomment %}
 {% assign now = site.time | date: "%Y-%m-%d" %}
+
+---
 
 ## 開催中の企画展
 
@@ -21,7 +21,7 @@ paginate: false
 <div class="grid">
 {% for post in site.posts %}
   {%- assign post_start = post.date | date: "%Y-%m-%d" -%}
-  {%- assign post_end   = post.end_date -%}
+  {%- assign post_end   = post.end_date | date: "%Y-%m-%d" -%}
   {% if post_start <= now and post_end >= now %}
     {% assign any_ongoing = true %}
     <div class="card" style="margin: 1rem;">
