@@ -1,36 +1,34 @@
-name: Import exhibitions
+ame: Scrape exhibitions
 
 on:
   schedule:
-    - cron: '0 1 * * *'        # JST 10:00 毎日
-  workflow_dispatch:            # 手動実行
+    - cron:  '0 1 * * *'   # JST 10:00 毎日
+  workflow_dispatch:        # 手動実行
 
 jobs:
   import:
     runs-on: ubuntu-latest
-
     steps:
-      # ① リポジトリ取得
       - uses: actions/checkout@v4
 
-      # ② Python 準備
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      # ③ 必要ライブラリをインストール
       - name: Install deps
-        run: |
-          pip install python-slugify icalendar requests
+        run: pip install requests beautifulsoup4 python-slugify
 
-      # ④ ICS→Markdown 変換（複数スクリプトを呼び出す場合はここに追加）
-      - name: Import exhibitions from ICS
-        run: python scripts/ics2md.py
+      # 国立西洋美術館
+      - name: Scrape NMWA (国立西洋美術館)
+        run: python scripts/scrape_nmwa.py
 
-      # ⑤ 生成された .md をコミット & プッシュ
+      # ここに他館のスクリプトを追加していく
+      # - name: Scrape MOMAT
+      #   run: python scripts/scrape_momat.py
+
       - uses: EndBug/add-and-commit@v9
         with:
           add: "_posts/*.md"
-          add_options: "--ignore-missing"     # 生成ゼロでも失敗しない
+          add_options: "--ignore-missing"
           default_author: github_actions
-          message: "auto: import exhibitions (ICS)"
+          message: "auto: import exhibitions (scraping)"
