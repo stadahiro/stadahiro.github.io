@@ -1,20 +1,18 @@
+# _data/museums.yml
 - id: nmwa
   name: 国立西洋美術館
   area: 上野
   nearest: 上野駅
   url: https://www.nmwa.go.jp/
+
 - id: momat
   name: 東京国立近代美術館
   area: 千代田
   nearest: 竹橋駅
   url: https://www.momat.go.jp/
+
 - id: mori
   name: 森美術館
   area: 六本木
   nearest: 六本木駅
   url: https://www.mori.art.museum/
-- id: nat-museum
-  name: 国立新美術館
-  area: 六本木
-  nearest: 乃木坂駅
-  url: https://www.nact.jp/

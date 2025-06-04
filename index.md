@@ -1,6 +1,5 @@
 ---
-title: 東京アートまとめ
-layout: default    # ※「home」ではなく「default」を指定し、Recent Posts 部分を出さないようにする
+layout: default
 author_profile: false
 ---
 
@@ -9,9 +8,6 @@ author_profile: false
 {: .notice--primary}
 **本サイトは東京の美術館・展覧会情報を毎日自動更新しています。**
 
-{% comment %}
-  今日の日付を "YYYY-MM-DD" 形式の文字列で取得する
-{% endcomment %}
 {% assign now = site.time | date: "%Y-%m-%d" %}
 
 ---
@@ -25,12 +21,29 @@ author_profile: false
   {%- assign post_end   = post.end_date | date: "%Y-%m-%d" -%}
   {% if post_start <= now and post_end >= now %}
     {% assign any_ongoing = true %}
+
+    {%- comment -%}
+      “museum” フィールド (例: nmwa, momat, mori) から
+      `_data/museums.yml` を参照して “館名” を取得する
+    {%- endcomment -%}
+    {% assign museum_obj = site.data.museums | where: "id", post.museum | first %}
+    {% assign museum_name = museum_obj.name %}
+
     <div class="card" style="margin: 1rem;">
       <div class="card__header">
+        {%- comment -%}
+          カード上部に小さく「館名」を表示する例
+        {%- endcomment -%}
+        <p class="museum-tag" style="font-size: 0.9rem; color: #555;">
+          {{ museum_name }}
+        </p>
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
       </div>
       <div class="card__body">
-        {%- comment -%} 開催期間を「YYYY年M月D日―YYYY年M月D日」の形式で表示したい場合は、post.content を使うか別途フィールドを追加してください {%- endcomment -%}
+        {%- comment -%}
+          本文部分には Front Matter で出力されている “会期テキスト” を表示
+          （scripts/scrape_nmwa.py が本文に **YYYY年MM月DD日－YYYY年MM月DD日** を書き込んでいるため）
+        {%- endcomment -%}
         {%- assign dates_raw = post.content | strip_html | strip_newlines -%}
         <p>{{ dates_raw }}</p>
         <p><a href="{{ post.link }}" target="_blank" rel="noopener">公式サイトを見る →</a></p>
@@ -54,8 +67,15 @@ author_profile: false
   {%- assign post_start = post.date | date: "%Y-%m-%d" -%}
   {% if post_start > now %}
     {% assign any_upcoming = true %}
+
+    {% assign museum_obj = site.data.museums | where: "id", post.museum | first %}
+    {% assign museum_name = museum_obj.name %}
+
     <div class="card" style="margin: 1rem;">
       <div class="card__header">
+        <p class="museum-tag" style="font-size: 0.9rem; color: #555;">
+          {{ museum_name }}
+        </p>
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
       </div>
       <div class="card__body">
