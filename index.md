@@ -1,15 +1,16 @@
 ---
-layout: home
+title: 東京アートまとめ
+layout: default    # ※「home」ではなく「default」を指定し、Recent Posts 部分を出さないようにする
 author_profile: false
-paginate: false
 ---
+
 ![hero](/assets/images/hero.jpg)
 
 {: .notice--primary}
 **本サイトは東京の美術館・展覧会情報を毎日自動更新しています。**
 
 {% comment %}
-  今日の日付（文字列 "YYYY-MM-DD"）を取得
+  今日の日付を "YYYY-MM-DD" 形式の文字列で取得する
 {% endcomment %}
 {% assign now = site.time | date: "%Y-%m-%d" %}
 
@@ -29,7 +30,9 @@ paginate: false
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
       </div>
       <div class="card__body">
-        <p>{{ post.dates }}</p>
+        {%- comment -%} 開催期間を「YYYY年M月D日―YYYY年M月D日」の形式で表示したい場合は、post.content を使うか別途フィールドを追加してください {%- endcomment -%}
+        {%- assign dates_raw = post.content | strip_html | strip_newlines -%}
+        <p>{{ dates_raw }}</p>
         <p><a href="{{ post.link }}" target="_blank" rel="noopener">公式サイトを見る →</a></p>
       </div>
     </div>
@@ -56,7 +59,8 @@ paginate: false
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
       </div>
       <div class="card__body">
-        <p>{{ post.dates }}</p>
+        {%- assign dates_raw = post.content | strip_html | strip_newlines -%}
+        <p>{{ dates_raw }}</p>
         <p><a href="{{ post.link }}" target="_blank" rel="noopener">公式サイトを見る →</a></p>
       </div>
     </div>
