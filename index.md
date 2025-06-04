@@ -13,7 +13,10 @@ paginate: false   # ページネーションは使わず、手動で2セクシ�
 ## 開催中の企画展
 
 {% assign now = site.time | date: "%Y-%m-%d" %}
-{% assign ongoing = site.posts | where_exp: "post", "post.date <= now and post.end_date >= now" %}
+{%- comment -%} 「開始日 ≤ now」でまず絞り込み {%- endcomment -%}
+{% assign tmp = site.posts | where_exp: "post", "post.date <= now" %}
+{%- comment -%} さらに「終了日 ≥ now」で絞り込む {%- endcomment -%}
+{% assign ongoing = tmp | where_exp: "post", "post.end_date >= now" %}
 
 {% if ongoing.size > 0 %}
   <div class="grid">
