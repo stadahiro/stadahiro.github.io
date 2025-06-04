@@ -1,5 +1,5 @@
 """
-国立西洋美術館 企画展情報取得スクリプト（開始日と終了日を front matter に含める版）
+国立西洋美術館 企画展情報取得スクリプト（デバッグ用プリント＋end_date付き版）
 """
 from __future__ import annotations
 import requests, re, os, pathlib
@@ -19,12 +19,14 @@ DASHES   = r"[‐-–―－ー-]"   # 省略線などの複数バリエーショ
 RANGE_RX = re.compile(rf"({DATE_RX})\s*{DASHES}\s*({DATE_RX})")
 
 POST_DIR = "_posts"
+# カレントディレクトリを出力（デバッグ用）
+print(f"[debug] cwd = {os.getcwd()}")
 os.makedirs(POST_DIR, exist_ok=True)
 
 def normalize_range(start: str, end: str) -> tuple[str,str]:
     """
     start: "2025年3月11日"
-    end:   "3月 8日" または "2025年6月8日" など
+    end:   "3月8日" または "2025年6月8日" など
     → 両方に年を付与して戻す
     """
     if "年" not in end and "年" in start:
@@ -73,16 +75,14 @@ def scrape_one(page_url: str) -> list[dict]:
                     "end_raw": end_norm,
                     "url": link
                 })
-        # heading ごとに break しない → 開催中/今後のブロックすべてを取得
+    print(f"[debug] {page_url} から {len(exhibitions)} 件の展覧会を検出")
     return exhibitions
 
 def main() -> None:
     for label, url in PAGES.items():
-        # PAGES のキー（開催中 / 今後）はログ用。出力には関係なし。
         for ex in scrape_one(url):
-            # raw 文字列から「YYYY年M月D日」を抽出して ISO 形式に直す
+            # start_raw と end_raw が空ならスキップ
             if not ex["start_raw"] or not ex["end_raw"]:
-                # 日付情報が取れなかったらスキップ
                 continue
 
             # 例: "2025年3月11日" を数字に分解
@@ -97,11 +97,13 @@ def main() -> None:
             iso_end   = f"{y2:04d}-{mo2:02d}-{d2:02d}"
             slug = slugify(ex["title"])[:50]
             fname = f"{POST_DIR}/{iso_start}-{slug}.md"
-            if pathlib.Path(fname).exists():
-                # 既存ファイルがあれば上書きせずスキップ
-                continue
+
+            # 既存ファイルチェックを一時的に外して常に書き込む
+            # if pathlib.Path(fname).exists():
+            #     continue
 
             # Markdown ファイルを生成
+            print(f"[debug] ファイル生成: {fname}")
             with open(fname, "w", encoding="utf-8") as f:
                 f.write(f"---\n")
                 f.write(f"title: \"{ex['title']}\"\n")
@@ -113,7 +115,6 @@ def main() -> None:
                 f.write(f"---\n\n")
                 # 表示用に元の会期テキストを本文に残す
                 f.write(f"**{ex['dates_raw']}**\n")
-    # 処理が終わったら終了
 
 if __name__ == "__main__":
     main()
