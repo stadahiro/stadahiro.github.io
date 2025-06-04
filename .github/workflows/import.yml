@@ -1,4 +1,4 @@
-ame: Scrape exhibitions
+name: Scrape exhibitions
 
 on:
   schedule:
