@@ -193,3 +193,7 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .campus { margin-top: 1rem; font-size: .82rem; }
 .campus iframe { display: block; width: 100%; height: 170px; border: 1px solid var(--line); border-radius: 6px; margin-bottom: .3rem; }
 @media (max-width: 860px) { .campus { display: none; } }
+
+/* email: wrap only before "[at]", never inside the address */
+.slinks .email { word-break: normal; overflow-wrap: normal; }
+.slinks .email .nw { white-space: nowrap; }
