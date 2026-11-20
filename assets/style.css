@@ -196,3 +196,8 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 
 /* email: always one line (sidebar is 280px wide for this) */
 .slinks .email { white-space: nowrap; word-break: normal; }
+
+/* e-mail: Gmail is the main contact, university address second (2026-11-20) */
+.slinks .mnote { display: block; font-size: .72rem; color: var(--muted); }
+.slinks .mail-sub { font-size: .85em; }
+.slinks .mail-sub .email, .slinks .mail-sub .email a { color: var(--muted); }
