@@ -188,3 +188,8 @@ h2::before { content: ""; width: .55rem; height: .55rem; border-radius: 2px; bac
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 /* Japanese: wrap at phrase boundaries instead of mid-word (Chrome/Edge; others fall back to normal). */
 main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: strict; }
+
+/* campus map under the sidebar links */
+.campus { margin-top: 1rem; font-size: .82rem; }
+.campus iframe { display: block; width: 100%; height: 170px; border: 1px solid var(--line); border-radius: 6px; margin-bottom: .3rem; }
+@media (max-width: 860px) { .campus { display: none; } }
