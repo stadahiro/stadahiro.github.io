@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stadahiro.github.io/sitemap.xml
