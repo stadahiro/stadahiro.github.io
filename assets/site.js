@@ -1,7 +1,8 @@
 // Email: assembled in the browser so the plain address is not in the HTML.
 document.querySelectorAll(".email").forEach((el) => {
   const addr = `${el.dataset.u}@${el.dataset.d}`;
-  el.innerHTML = `<a href="mailto:${addr}">${addr}</a>`;
+  // shown as "user [at] domain" (下司 2026-11-20); the link still opens the mail app.
+  el.innerHTML = `<a href="mailto:${addr}">${el.dataset.u} [at] ${el.dataset.d}</a>`;
 });
 
 // Publications filter (publications page only).
