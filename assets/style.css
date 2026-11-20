@@ -201,3 +201,24 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .slinks .mnote { display: block; font-size: .72rem; color: var(--muted); }
 .slinks .mail-sub { font-size: .85em; }
 .slinks .mail-sub .email, .slinks .mail-sub .email a { color: var(--muted); }
+
+/* Citation metrics (2026-11-20) */
+.cites { margin: 1.2rem 0 1rem; padding: .9rem 1rem .7rem; border: 1px solid #e3e6e8; border-radius: 10px;
+  background: linear-gradient(180deg, #fff, #f8faf9); }
+.cites figcaption { font-size: .85rem; margin-bottom: .6rem; }
+.cites figcaption b { color: var(--accent); }
+.cwrap { display: flex; gap: 1.4rem; align-items: flex-end; flex-wrap: wrap; }
+.ctiles { display: flex; gap: .6rem; }
+.ctile { min-width: 5.2rem; padding: .5rem .7rem; border-radius: 8px; background: var(--accent-soft); text-align: center; }
+.ctile b { display: block; font-size: 1.6rem; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ctile span { font-size: .72rem; color: var(--muted); }
+.cchart { flex: 1 1 300px; display: flex; align-items: flex-end; gap: 5px; height: 120px; }
+.cbar { flex: 1 0 22px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+.cbar i { display: block; width: 70%; max-width: 26px; background: var(--accent); border-radius: 3px 3px 0 0;
+  transform-origin: bottom; animation: grow .5s ease-out both; }
+.cbar.part i { background: repeating-linear-gradient(135deg, var(--accent) 0 3px, #8fb0b3 3px 6px); }
+.cn { font-size: .68rem; color: #666; margin-bottom: 2px; font-variant-numeric: tabular-nums; }
+.cy { font-size: .66rem; color: #555; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.cnote { margin: .6rem 0 0; font-size: .74rem; color: #777; }
+.badge.cited { background: #f1f4f5; color: var(--accent); border-color: #d5dfe0; }
+@keyframes grow { from { transform: scaleY(0); } to { transform: none; } }
