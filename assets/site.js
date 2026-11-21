@@ -2,7 +2,7 @@
 document.querySelectorAll(".email").forEach((el) => {
   const addr = `${el.dataset.u}@${el.dataset.d}`;
   // shown as "user [at] domain" (下司 2026-11-20); the link still opens the mail app.
-  el.innerHTML = `<a href="mailto:${addr}">${el.dataset.u} <span class="nw">[at] ${el.dataset.d}</span></a>`;
+  el.innerHTML = `<a href="mailto:${addr}" title="${addr}">${el.dataset.u} <span class="nw">[at] ${el.dataset.d}</span></a>`;
 });
 
 // Publications filter (publications page only).
