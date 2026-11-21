@@ -270,3 +270,27 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
   .top nav::-webkit-scrollbar { display: none; }
   .top nav .lang { margin-left: auto; padding: 0 .45rem; }
 }
+/* citation chart on phones: bars share the width; years shown as ’15 */
+.cy .ys { display: none; }
+@media (max-width: 560px) {
+  .cites { padding: .8rem .7rem .6rem; }
+  .cchart { flex-basis: 100%; gap: 3px; min-width: 0; }
+  .cbar { flex: 1 1 0; min-width: 0; }
+  .cbar i { width: 78%; }
+  .cn { font-size: .62rem; }
+  .cy .yl { display: none; }
+  .cy .ys { display: inline; }
+}
+/* phones: nothing may push the page wider than the screen */
+@media (max-width: 560px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); }
+  main { overflow-wrap: anywhere; }
+  .cv { grid-template-columns: minmax(0, 1fr); }
+  .tl, .cites { min-width: 0; max-width: 100%; }
+  .tcols { gap: 3px; }
+  .tcol { flex: 1 0 26px; }
+  .sc-index { font-size: .88rem; }
+  .sc-index td:first-child { overflow-wrap: anywhere; }
+  .sc-index th, .sc-index td { padding: .45rem .35rem; }
+}
+.cbar i { flex-shrink: 0; }
