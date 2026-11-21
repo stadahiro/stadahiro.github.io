@@ -264,7 +264,7 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .slinks .mlab { font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 .3rem; line-height: 1.4; }
 /* narrow screens: keep each nav label on one line; nav gets its own row under the name */
 .top nav a { white-space: nowrap; }
-@media (max-width: 560px) {
+@media (max-width: 620px) {
   .top { flex-wrap: wrap; row-gap: .35rem; padding: .55rem 1rem; }
   .top nav { width: 100%; gap: .8rem; font-size: .86rem; overflow-x: auto; scrollbar-width: none; }
   .top nav::-webkit-scrollbar { display: none; }
@@ -307,3 +307,8 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
   .slinks li a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .slinks .email > :not(a) { display: none; }
 }
+/* header brand: 下司研究室｜パーソナリティ心理学 (下司 2026-11-21) */
+.brand { display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap; }
+.brand .bmark { width: 22px; height: 22px; flex: none; color: var(--accent); }
+.brand .bs { font-weight: 400; color: var(--muted); font-size: .88em; padding-left: .55rem; border-left: 1px solid var(--line); }
+@media (max-width: 860px) { .brand .bs { display: none; } }
