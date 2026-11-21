@@ -252,3 +252,5 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .sc-items { margin: 0; padding-left: 2.6rem; }
 .sc-items li { padding: .18rem 0; border-bottom: 1px solid #f0f2f3; }
 .sc-items li::marker { color: var(--muted); font-size: .85rem; }
+.slinks .ic { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; height: 1.6rem; }
+.slinks .ico { width: 18px; height: 18px; display: block; }
