@@ -222,3 +222,13 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .cnote { margin: .6rem 0 0; font-size: .74rem; color: #777; }
 .badge.cited { background: #f1f4f5; color: var(--accent); border-color: #d5dfe0; }
 @keyframes grow { from { transform: scaleY(0); } to { transform: none; } }
+
+/* Measures tab */
+.lead { color: #555; }
+.scale { margin: 1.6rem 0 2rem; }
+.scale h2 { font-size: 1.1rem; }
+.scale-sum { margin: .3rem 0 .5rem; }
+.scale .pubs { margin: .3rem 0; }
+.scale-det { margin-top: .5rem; }
+.scale-det summary { cursor: pointer; color: #2c5d63; }
+.scale-text { margin-top: .5rem; padding: .8rem 1rem; background: #f7f7f5; border-radius: 6px; font-size: .92rem; line-height: 1.75; overflow-wrap: anywhere; }
