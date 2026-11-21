@@ -259,3 +259,6 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .sc-items li::marker { color: var(--muted); font-size: .85rem; }
 .slinks .ic { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; height: 1.6rem; }
 .slinks .ico { width: 18px; height: 18px; display: block; }
+.slinks .msub { display: flex; align-items: center; gap: .35rem; margin-top: .15rem; font-size: .8rem; }
+.slinks .msub .email, .slinks .msub .email a { color: var(--muted); }
+.slinks .mlab { font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 .3rem; line-height: 1.4; }
