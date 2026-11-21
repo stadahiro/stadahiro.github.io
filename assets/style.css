@@ -312,3 +312,16 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .brand .bmark { width: 22px; height: 22px; flex: none; color: var(--accent); }
 .brand .bs { font-weight: 400; color: var(--muted); font-size: .88em; padding-left: .55rem; border-left: 1px solid var(--line); }
 @media (max-width: 860px) { .brand .bs { display: none; } }
+
+/* scale details: clearer hierarchy (2026-11-21) */
+.scale-text h3 { font-size: 1rem; font-weight: 700; color: var(--text, #222); margin: 1.6rem 0 .6rem; padding: .1rem 0 .3rem .6rem; border-bottom: 1px solid var(--line); border-left: 4px solid var(--accent); }
+.scale-text h3 .count { font-weight: 400; font-size: .8rem; color: var(--muted); margin-left: .5rem; }
+.scale-text h4 { font-size: .92rem; font-weight: 700; margin: 1.1rem 0 .35rem; color: var(--accent); }
+.sc-dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; margin: .3rem 0 .6rem; }
+.sc-dl dt { font-weight: 700; white-space: nowrap; }
+.sc-dl dd { margin: 0; }
+.sc-ul { margin: .3rem 0 .6rem; padding-left: 1.3rem; }
+.sc-ul li { margin: .25rem 0; }
+.sc-refs { list-style: none; margin: .3rem 0; padding: 0; font-size: .85rem; }
+.sc-refs li { padding-left: 2em; text-indent: -2em; margin: .3rem 0; }
+@media (max-width: 560px) { .sc-dl { grid-template-columns: 1fr; gap: 0; } .sc-dl dd { margin-bottom: .4rem; } .sc-dl dt { white-space: normal; } }
