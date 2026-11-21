@@ -134,8 +134,7 @@ h3 { font-size: .95rem; color: var(--muted); margin: 1.4rem 0 .4rem; }
 .top { border-bottom: 0; box-shadow: 0 1px 0 var(--line); }
 .top::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--warm)); }
-.avatar { box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--accent-soft); transition: transform .3s; }
-.avatar:hover { transform: rotate(-4deg) scale(1.03); }
+.avatar { box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--accent-soft); }
 h2 { display: flex; align-items: center; gap: .5rem; }
 h2::before { content: ""; width: .55rem; height: .55rem; border-radius: 2px; background: var(--warm); flex: none; }
 .profile h2::before { background: var(--accent); }
@@ -153,7 +152,7 @@ h2::before { content: ""; width: .55rem; height: .55rem; border-radius: 2px; bac
 .top nav a:not(.lang)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -3px; height: 2px;
   background: var(--warm); transition: right .25s; }
 .top nav a:not(.lang):hover::after, .top nav a[aria-current="page"]::after { right: 0; }
-@media (prefers-reduced-motion: reduce) { .avatar, .pub, .top nav a::after { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .pub, .top nav a::after { transition: none; } }
 
 /* Publications timeline */
 .tl { margin: 1.2rem 0 1.4rem; padding: .9rem 1rem .6rem; border: 1px solid #e3e6e8; border-radius: 10px;
