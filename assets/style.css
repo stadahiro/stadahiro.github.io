@@ -262,3 +262,11 @@ main:lang(ja), html[lang="ja"] main { word-break: auto-phrase; line-break: stric
 .slinks .msub { display: flex; align-items: center; gap: .35rem; margin-top: .15rem; font-size: .8rem; }
 .slinks .msub .email, .slinks .msub .email a { color: var(--muted); }
 .slinks .mlab { font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 .3rem; line-height: 1.4; }
+/* narrow screens: keep each nav label on one line; nav gets its own row under the name */
+.top nav a { white-space: nowrap; }
+@media (max-width: 560px) {
+  .top { flex-wrap: wrap; row-gap: .35rem; padding: .55rem 1rem; }
+  .top nav { width: 100%; gap: .8rem; font-size: .86rem; overflow-x: auto; scrollbar-width: none; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav .lang { margin-left: auto; padding: 0 .45rem; }
+}
