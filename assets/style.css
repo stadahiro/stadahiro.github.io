@@ -119,6 +119,8 @@ h3 { font-size: .95rem; color: var(--muted); margin: 1.4rem 0 .4rem; }
 .cv dd { margin: 0; }
 .cv b { font-weight: 600; }
 .cv .note { color: var(--muted); font-size: .9rem; }
+.cv .kw { word-break: keep-all; overflow-wrap: anywhere; }
+.cv .nw { white-space: nowrap; }
 @media (max-width: 560px) { .cv { grid-template-columns: 1fr; gap: 0; } .cv dd { margin-bottom: .7rem; } }
 .pub .ref { padding-left: 1.6em; text-indent: -1.6em; }
 .pub .ref b { font-weight: 600; }
